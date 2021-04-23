@@ -12,8 +12,9 @@ import { listPackages } from '../actions/packageActions'
 import { listDestinations } from '../actions/destinationActions'
 import OwlCarousel from 'react-owl-carousel';
 
-const HomeScreen = ({ match }) =>
-{
+import SecondHeader from '../components/SecondHeader'
+
+const HomeScreen = ({ match }) => {
     const dispatch = useDispatch()
 
     const packageList = useSelector((state) => state.packageList)
@@ -22,14 +23,14 @@ const HomeScreen = ({ match }) =>
     const destinationList = useSelector((state) => state.destinationList)
     const { loading: loadingDestinations, error: errorDestinations, destinations } = destinationList
 
-    useEffect(() =>
-    {
+    useEffect(() => {
         dispatch(listPackages())
         dispatch(listDestinations())
     }, [dispatch])
 
     return (
         <Container>
+            <SecondHeader />
             <Meta />
             <Search />
             <center>
